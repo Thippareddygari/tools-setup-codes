@@ -1,5 +1,10 @@
-- name: download repo file
-  ansible.builtin.get_url: 
+# - name: download repo file
+#   ansible.builtin.get_url: 
+#     url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+#     dest: /etc/yum.repos.d/hashicorp.repo
+
+- name: Download repo file
+  ansible.builtin.get_url:
     url: https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
     dest: /etc/yum.repos.d/hashicorp.repo
 
