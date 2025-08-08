@@ -1,7 +1,7 @@
 resource "aws_security_group" "tool_sg" {
   name = "${var.name}-sg"
   description = "${var.name} Security group"
-  
+
   tags = {
     Name =  "${var.name}-sg"
   }
@@ -9,7 +9,7 @@ resource "aws_security_group" "tool_sg" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
-  security_group_id = aws_instance.tool_sg.id
+  security_group_id = aws_security_group.tool_sg.id
   cidr_ipv4 = "0.0.0.0/0"
   from_port = 22
   to_port = 22
@@ -17,7 +17,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "allow_port" {
-  security_group_id = aws_instance.tool_sg.id
+  security_group_id = aws_security_group.tool_sg.id
   cidr_ipv4 = "0.0.0.0/0"
   from_port = var.port
   to_port = var.port
@@ -25,11 +25,11 @@ resource "aws_vpc_security_group_ingress_rule" "allow_port" {
 }
 
 resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
-  security_group_id = aws_instance.tool.id
-  cidr_ipv4 = aws_instance.tool
-  from_port = []
-  to_port = []
-  ip_protocol = "tcp"
+  security_group_id = aws_security_group.tool_sg.id
+  cidr_ipv4 = "0.0.0.0/0"
+  from_port = 0
+  to_port = 0
+  ip_protocol = "-1"
 }
 
 resource "aws_instance" "tool" {
