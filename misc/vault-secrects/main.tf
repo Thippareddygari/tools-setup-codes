@@ -22,6 +22,13 @@ resource "local_file" "test" {
   content = data.vault_generic_secret.secret_data.data["username"]
 }
 
+resource "vault_mount" "ssh" {
+  path ="infra"
+  type = "kv"
+  options = {version = "2"}
+  description = "Infra secrets"
+}
+
 resource "vault_generic_secret" "ssh" {
   path = "infra/ssh"
 
