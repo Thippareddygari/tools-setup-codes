@@ -45,8 +45,9 @@ path = "${vault_mount.roboshop-dev.path}/cart"
 
 data_json = <<EOT
 {
-"username" : "ec2-user",
-"password" : "DevOps321"
+"REDIS_HOST" : "redis-dev.kommanuthala.store",
+"CATALOGUE_HOST" : "catalogue-dev.kommanuthala.store"
+"CATALOGUE_PORT" : "8080"
 }
 EOT
 }
