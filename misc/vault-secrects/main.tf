@@ -40,6 +40,13 @@ resource "vault_generic_secret" "ssh" {
   EOT
 }
 
+resource "vault_mount" "roboshop-dev" {
+  path = "roboshop-dev"
+  type = "kv"
+  options = {version = "2"}
+  description = "Robo shop"
+}
+
 resource "vault_generic_secret" "roboshop-dev-cart" {
 path = "${vault_mount.roboshop-dev.path}/cart"
 
@@ -52,9 +59,3 @@ data_json = <<EOT
 EOT
 }
 
-resource "vault_mount" "roboshop-dev" {
-  path = "roboshop-dev"
-  type = "kv"
-  options = {version = "2"}
-  description = "Robo shop"
-}
