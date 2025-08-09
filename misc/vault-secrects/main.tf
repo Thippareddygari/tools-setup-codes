@@ -27,7 +27,7 @@ resource "vault_generic_secret" "ssh" {
 
   data_json = <<EOT
   {
-  "username" : "ec2-user"
+  "username" : "ec2-user",
   "password" : "DevOps321"
   }
   EOT
