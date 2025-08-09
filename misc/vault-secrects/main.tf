@@ -45,7 +45,7 @@ path = "${vault_mount.roboshop-dev.path}/cart"
 
 data_json = <<EOT
 {
-"username" : "ec2-user"
+"username" : "ec2-user",
 "password" : "DevOps321"
 }
 EOT
