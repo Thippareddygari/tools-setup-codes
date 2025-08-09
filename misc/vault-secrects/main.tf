@@ -1,6 +1,6 @@
 provider "vault" {
-    address = ""
-    token = var.token
+    address = "http://vault.kommanuthala.store:8200"
+    token = var.vault_token
 }
 
 terraform {
@@ -11,7 +11,7 @@ terraform {
   }
 }
 
-variable "token" {}
+variable "vault_token" {}
 
 data "vault_generic_secret" "secret_data" {
   path = "test/demo"
